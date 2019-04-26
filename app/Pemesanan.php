@@ -14,6 +14,8 @@ class Pemesanan extends Model
         'user_id'
     ];
 
+    static protected $codePrefix = 'P';
+
     public $incrementing = false;
 
     public function users() {
@@ -25,7 +27,8 @@ class Pemesanan extends Model
     }
 
     public function nextID() {
-        $data = $this->all()->count();
-        return 'P' . ($data + 1);
+        $data = (self::latest()->first())->kode_pemesanan;
+        $data = str_replace(self::$codePrefix, '', $data);
+        return self::$codePrefix . ($data + 1);
     }
 }

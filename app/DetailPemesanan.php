@@ -18,6 +18,8 @@ class DetailPemesanan extends Model
         'jumlah_disetujui',
         'status'
     ];
+
+    static protected $codePrefix = 'DP';
     
     public $incrementing = false;
 
@@ -30,7 +32,8 @@ class DetailPemesanan extends Model
     }
 
     public function nextID() {
-        $data = $this->all()->count();
-        return 'DP' . ($data + 1);
+        $data = (self::latest()->first())->kode_detail_pemesanan;
+        $data = str_replace(self::$codePrefix, '', $data);
+        return self::$codePrefix . ($data + 1);
     }
 }

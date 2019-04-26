@@ -15,6 +15,8 @@ class BarangKeluar extends Model
         'user_id',
     ];
 
+    static protected $codePrefix = 'BKS';
+
     public $incrementing = false;
 
     public function user() {
@@ -26,7 +28,8 @@ class BarangKeluar extends Model
     }
 
     public static function nextID() {
-        $data = self::all()->count();
-        return 'BKS' . ($data + 1);
+        $data = (self::latest()->first())->kode_barang_keluar;
+        $data = str_replace(self::$codePrefix, '', $data);
+        return self::$codePrefix . ($data + 1);
     }
 }

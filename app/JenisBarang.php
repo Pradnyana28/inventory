@@ -14,6 +14,8 @@ class JenisBarang extends Model
         'nama_jenis_barang'
     ];
 
+    static protected $codePrefix = 'DB';
+
     public $incrementing = false;
 
     public function barang() {
@@ -21,7 +23,8 @@ class JenisBarang extends Model
     }
 
     public function nextID() {
-        $data = $this->all()->count();
-        return 'DB' . ($data + 1);
+        $data = (self::latest()->first())->kode_jenis_barang;
+        $data = str_replace(self::$codePrefix, '', $data);
+        return self::$codePrefix . ($data + 1);
     }
 }

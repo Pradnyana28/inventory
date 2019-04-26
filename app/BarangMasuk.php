@@ -17,6 +17,8 @@ class BarangMasuk extends Model
         'tgl_masuk'
     ];
 
+    static protected $codePrefix = 'BMS';
+
     public $incrementing = false;
 
     public function users() {
@@ -28,7 +30,8 @@ class BarangMasuk extends Model
     }
 
     public static function nextID() {
-        $data = self::all()->count();
-        return 'BMS' . ($data + 1);
+        $data = (self::latest()->first())->kode_barang_masuk;
+        $data = str_replace(self::$codePrefix, '', $data);
+        return self::$codePrefix . ($data + 1);
     }
 }

@@ -18,6 +18,8 @@ class DetailBarangMasuk extends Model
         'jumlah'
     ];
 
+    static protected $codePrefix = 'DBMS';
+
     public $incrementing = false;
 
     public function barang() {
@@ -29,7 +31,8 @@ class DetailBarangMasuk extends Model
     }
 
     public static function nextID() {
-        $data = self::all()->count();
-        return 'DBMS' . ($data + 1);
+        $data = (self::latest()->first())->kode_detailbarang_masuk;
+        $data = str_replace(self::$codePrefix, '', $data);
+        return self::$codePrefix . ($data + 1);
     }
 }

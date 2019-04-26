@@ -14,7 +14,7 @@
                 @slot('attribute', [
                     'type' => 'text',
                     'disabled' => 'disabled',
-                    'value' => Barang::nextID()
+                    'value' => App\Barang::nextID()
                 ])
             @endcomponent
 

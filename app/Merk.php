@@ -14,6 +14,8 @@ class Merk extends Model
         'nama_merk'
     ];
 
+    static protected $codePrefix = 'BM';
+
     public $incrementing = false;
 
     public function barang() {
@@ -21,7 +23,8 @@ class Merk extends Model
     }
 
     public function nextID() {
-        $data = $this->all()->count();
-        return 'BM' . ($data + 1);
+        $data = (self::latest()->first())->kode_merk;
+        $data = str_replace(self::$codePrefix, '', $data);
+        return self::$codePrefix . ($data + 1);
     }
 }

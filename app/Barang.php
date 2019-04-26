@@ -23,6 +23,8 @@ class Barang extends Model
         'satuan'
     ];
 
+    static protected $codePrefix = 'MM';
+
     public $incrementing = false;
 
     public function merk() {
@@ -60,7 +62,8 @@ class Barang extends Model
     }
 
     public static function nextID() {
-        $data = self::all()->count();
-        return 'MM' . ($data + 1);
+        $data = (self::latest()->first())->kode_barang;
+        $data = str_replace(self::$codePrefix, '', $data);
+        return self::$codePrefix . ($data + 1);
     }
 }
