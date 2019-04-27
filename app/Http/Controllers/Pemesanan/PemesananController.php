@@ -72,13 +72,15 @@ class PemesananController extends Controller
                     'status' => 'no'
                 ];
                 // update or create missing barang
-                $barang = Barang::updateOrCreate([
-                    'kode_barang' => $data['kode_barang'][$i],
-                    'nama_barang' => $data['nama_barang'][$i],
-                    'stok' => $data['stok_barang'][$i],
-                    'minimum_stok' => 0,
-                    'satuan' => $data['satuan_barang'][$i]
-                ]);
+                $barang = Barang::updateOrCreate(
+                    ['kode_barang' => $data['kode_barang'][$i]],
+                    [
+                        'nama_barang' => $data['nama_barang'][$i],
+                        'stok' => $data['stok_barang'][$i],
+                        'minimum_stok' => 0,
+                        'satuan' => $data['satuan_barang'][$i]
+                    ]
+                );
                 // save to detail pemesanan
                 $detailPemesanan = DetailPemesanan::create($dataDetailPesanan);
             }
@@ -87,23 +89,9 @@ class PemesananController extends Controller
                 'success' => true,
                 'redirect' => route('pemesanan.index')
             ]);
-            
         } catch (Exception $e) {
             return response()->json(['result' => $e->getMessage()]);
         }
-    }
-
-    /**
-     * Show detail dari kode pemesanan
-     */
-    public function show($id)
-    {
-        
-    }
-
-    public function edit($id)
-    {
-        //
     }
 
     public function update(Request $request, $id)
