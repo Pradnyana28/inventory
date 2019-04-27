@@ -12,7 +12,7 @@ use Yajra\Datatables\Datatables;
 class PemesananDetailController extends Controller
 {
     public function index($kode_pemesanan) {
-        if (Auth::user()->departemen == 'Admin') {
+        if (Auth::user()->jabatan == 'Admin') {
             return $this->forAdmin($kode_pemesanan);
         }
 
