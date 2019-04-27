@@ -62,7 +62,7 @@ class Barang extends Model
     }
 
     public static function nextID() {
-        $data = (self::latest()->first())->kode_barang;
+        $data = self::latest()->first() ? ((self::latest()->first()))->kode_barang : self::$codePrefix .'1';
         $data = str_replace(self::$codePrefix, '', $data);
         return self::$codePrefix . ($data + 1);
     }
