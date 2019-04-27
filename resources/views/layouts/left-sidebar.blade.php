@@ -16,7 +16,7 @@
                     </a>
                 </li>
 
-                @if (mb_strtolower(Auth::user()->jabatan, 'utf-8') === 'operation')
+                @if (mb_strtolower(Auth::user()->jabatan, 'utf-8') === 'staff')
                 <li class="">
                     <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false">
                         <i class="fa fa-cart-plus"></i><span class="hide-menu">Pemesanan</span>
