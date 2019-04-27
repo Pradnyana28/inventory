@@ -16,7 +16,7 @@
                     </a>
                 </li>
 
-                @if (mb_strtolower(Auth::user()->departemen, 'utf-8') === 'operation')
+                @if (mb_strtolower(Auth::user()->jabatan, 'utf-8') === 'operation')
                 <li class="">
                     <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false">
                         <i class="fa fa-cart-plus"></i><span class="hide-menu">Pemesanan</span>
@@ -29,7 +29,7 @@
                 </li>
                 @endif
 
-                @if (mb_strtolower(Auth::user()->departemen, 'utf-8') === 'admin')
+                @if (mb_strtolower(Auth::user()->jabatan, 'utf-8') === 'admin')
                 <li class="">
                     <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false">
                         <i class="flaticon-folder"></i><span class="hide-menu">Manajemen</span>
@@ -54,7 +54,7 @@
                 </li>
                 @endif
 
-                @if (mb_strtolower(Auth::user()->departemen, 'utf-8') === 'manajer')
+                @if (mb_strtolower(Auth::user()->jabatan, 'utf-8') === 'manajer')
                 <li>
                     <a href="{{ route('laporan') }}" class=""><i class="flaticon-folder"></i><span class="hide-menu">Laporan</span></a>
                 </li>

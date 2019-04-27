@@ -26,7 +26,7 @@ class HomeController extends Controller
     public function index()
     {
         $data = [];
-        if (Auth::user()->departemen == 'Admin') {
+        if (Auth::user()->jabatan == 'Admin') {
             // get data barang to show on dashboard
             $data['barang'] = Barang::whereRaw('stok < minimum_stok')->get()->toArray();
         }
