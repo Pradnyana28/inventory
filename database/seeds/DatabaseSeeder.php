@@ -18,22 +18,22 @@ class DatabaseSeeder extends Seeder
                 [
                     'nama_user' => 'Agus Dibya',
                     'email' => 'operation@inventory.com',
-                    'jabatan' => 'Operator Gudang',
+                    'jabatan' => 'Staff',
                     'departemen' => 'Operation',
                     'password' => User::generatePassword('123456789')
                 ],
                 [
                     'nama_user' => 'Dibya Ajus',
                     'email' => 'admin@inventory.com',
-                    'jabatan' => 'Kepala Admin',
-                    'departemen' => 'Admin',
+                    'jabatan' => 'Admin',
+                    'departemen' => 'Manajemen',
                     'password' => User::generatePassword('123456789')
                 ],
                 [
                     'nama_user' => 'Bos Dibya',
                     'email' => 'manajer@inventory.com',
-                    'jabatan' => 'Kepala Gudang',
-                    'departemen' => 'Manajer',
+                    'jabatan' => 'Manajer',
+                    'departemen' => 'Manajemen',
                     'password' => User::generatePassword('123456789')
                 ]
             ]);

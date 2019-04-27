@@ -28,7 +28,7 @@ class PemesananDetailController extends Controller
                                 ->where('kode_pemesanan', $kode_pemesanan)
                                 ->get()
                                 ->toArray();
-        return view("pages.operation.showPemesanan", ['detail' => $detailPemesanan]);
+        return view("pages.staff.showPemesanan", ['detail' => $detailPemesanan]);
     }
 
     public function getData($kode_pemesanan) {
