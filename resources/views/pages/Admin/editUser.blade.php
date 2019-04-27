@@ -39,8 +39,8 @@
             @slot('attribute', [
                 'name' => 'jabatan',
                 'options' => [
-                    'Operator Gudang' => 'Operator Gudang',
-                    'Staff Admin' => 'Staff Admin',
+                    'Staff' => 'Staff',
+                    'Admin' => 'Admin',
                     'Manajer' => 'Manajer'
                 ]
             ])
@@ -54,9 +54,12 @@
             @slot('attribute', [
                 'name' => 'departemen',
                 'options' => [
-                    'Operation' => 'Karyawan',
-                    'Admin' => 'Admin',
-                    'Manajer' => 'Manajer'
+                    'Operation' => 'Operation',
+                    'Reservation' => 'Reservation',
+                    'Manajemen' => 'Manajemen',
+                    'IT' => 'IT',
+                    'Ticketing' => 'Ticketing',
+                    'Accounting' => 'Accounting'
                 ]
             ])
         @endcomponent
