@@ -28,7 +28,7 @@ class BarangKeluar extends Model
     }
 
     public static function nextID() {
-        $data = (self::latest()->first())->kode_barang_keluar;
+        $data = self::latest()->first() ? ((self::latest()->first()))->kode_barang_keluar : self::$codePrefix . 0;
         $data = str_replace(self::$codePrefix, '', $data);
         return self::$codePrefix . ($data + 1);
     }

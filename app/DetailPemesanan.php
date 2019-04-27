@@ -32,7 +32,7 @@ class DetailPemesanan extends Model
     }
 
     public function nextID() {
-        $data = (self::latest()->first())->kode_detail_pemesanan;
+        $data = self::latest()->first() ? ((self::latest()->first()))->kode_detail_pemesanan : self::$codePrefix . 0;
         $data = str_replace(self::$codePrefix, '', $data);
         return self::$codePrefix . ($data + 1);
     }
