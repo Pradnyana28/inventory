@@ -63,13 +63,14 @@ class UserController extends Controller
             // save it
             $data = $request->all();
             $users = User::findOrFail($id);
-            $users->fill(collect($data)->filter(function () use ($data) {
-                return '' === $data['password'];
-            })->toArray());
-            if ($data['password']) {
-                $users->password = User::generatePassword($data['password']);
-            }
+
+            $users->password = !empty($data['password']) ? User::generatePassword($data['password']) : $users->password;
+            $users->nama_user = $data['nama_user'];
+            $users->email = $data['email'];
+            $users->jabatan = $data['jabatan'];
+            $users->departemen = $data['departemen'];
             $users->save();
+            
             // return response
             return response()->json([
                 'success' => true,
