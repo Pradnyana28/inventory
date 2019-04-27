@@ -31,9 +31,10 @@ class DetailPemesanan extends Model
         return $this->belongsTo(Pemesanan::class, 'kode_pemesanan');
     }
 
-    public function nextID() {
-        $data = self::latest()->first() ? ((self::latest()->first()))->kode_detail_pemesanan : self::$codePrefix . 0;
-        $data = str_replace(self::$codePrefix, '', $data);
+    public static function nextID() {
+        // $data = self::latest()->first() ? (self::orderBy('kode_detail_pemesanan', 'desc')->latest()->first()) : self::$codePrefix . 0;
+        // $data = str_replace(self::$codePrefix, '', $data);
+        $data = self::all()->count();
         return self::$codePrefix . ($data + 1);
     }
 }

@@ -62,7 +62,7 @@ class PemesananController extends Controller
              * @param status status penerimaan setiap barang
              */
             for ($i=0; $i < count($data['kode_barang']); $i++) { 
-                $detailPemesananNextID = (new DetailPemesanan)->nextID();
+                $detailPemesananNextID = DetailPemesanan::nextID();
                 $dataDetailPesanan = [
                     'kode_detail_pemesanan' => $detailPemesananNextID,
                     'kode_pemesanan' => $pemesananNextID,
