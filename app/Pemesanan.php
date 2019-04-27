@@ -26,7 +26,7 @@ class Pemesanan extends Model
         return $this->hasMany(DetailPemesanan::class);
     }
 
-    public function nextID() {
+    public static function nextID() {
         $data = self::latest()->first() ? ((self::latest()->first()))->kode_pemesanan : self::$codePrefix . 0;
         $data = str_replace(self::$codePrefix, '', $data);
         return self::$codePrefix . ($data + 1);

@@ -19,7 +19,7 @@
                 @slot('class', 'col-6')
                 @slot('attribute', [
                     'type' => 'text',
-                    'value' => (new App\Pemesanan)->nextID(),
+                    'value' => App\Pemesanan::nextID(),
                     'disabled' => 'disabled'
                 ])
             @endcomponent
