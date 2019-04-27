@@ -41,7 +41,7 @@ class PemesananController extends Controller
             $data = $request->all();
             $pemesananNextID = Pemesanan::nextID();
 
-            if (count($data['kode_barang']) == 0) {
+            if (!$request->has('kode_barang')) {
                 throw new Exception("Anda belum menginputkan barang.");
             }
 
