@@ -22,7 +22,7 @@ class PemesananController extends Controller
     public function index()
     {
         // $pemesanan = Pemesanan::all()->toArray();
-        return view("pages.{$this->departemen()}.pemesanan");
+        return view("pages.{$this->jabatan()}.pemesanan");
     }
 
     /**
@@ -31,7 +31,7 @@ class PemesananController extends Controller
     public function create()
     {
         $barang = Barang::all()->toArray();
-        return view("pages.{$this->departemen()}.addPemesanan", compact('barang'));
+        return view("pages.{$this->jabatan()}.addPemesanan", compact('barang'));
     }
 
     public function store(Request $request)
@@ -150,8 +150,8 @@ class PemesananController extends Controller
         //
     }
 
-    public function departemen() {
-        return Auth::user()->departemen;
+    public function jabatan() {
+        return Auth::user()->jabatan;
     }
 
     public function getData() {

@@ -16,7 +16,7 @@ class BarangKeluarController extends Controller
     }
 
     public function index() {
-        return view("pages.{$this->departemen()}.showBarangKeluar");
+        return view("pages.{$this->jabatan()}.showBarangKeluar");
     }
 
     public function getData() {
@@ -26,8 +26,8 @@ class BarangKeluarController extends Controller
                             })->make();
     }
 
-    public function departemen() {
-        return Auth::user()->departemen;
+    public function jabatan() {
+        return Auth::user()->jabatan;
     }
 
     /**
