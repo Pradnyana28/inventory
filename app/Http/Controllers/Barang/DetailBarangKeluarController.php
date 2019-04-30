@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Barang;
 
 use Exception;
 use DataTables;
+use App\Barang;
 use App\DetailBarangKeluar;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -29,8 +30,13 @@ class DetailBarangKeluarController extends Controller
             // update data
             foreach ($request->get('status_penerimaan') as $id_detail_barang_keluar => $status) {
                 $check = DetailBarangKeluar::findOrFail($id_detail_barang_keluar);
-                $check->status = $status;
-                $check->save();
+
+                if ($check->status != $status) {
+                    $check->status = $status;
+                    $check->save();
+
+                    $this->stockTransaction($status, $check);
+                }
             }
 
             // return success response
@@ -41,6 +47,14 @@ class DetailBarangKeluarController extends Controller
 
         } catch (Exception $e) {
             return response()->json(['result' => $e->getMessage()]);
+        }
+    }
+
+    public function stockTransaction($status, $check) {
+        if ($status == 'ya') {
+            Barang::decreaseStock($check->kode_barang, $check->jumlah_disetujui);
+        } else {
+            Barang::increaseStock($check->kode_barang, $check->jumlah_disetujui);
         }
     }
 
