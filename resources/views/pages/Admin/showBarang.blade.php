@@ -35,8 +35,8 @@
         ajax: '{{ route(Route::currentRouteName()) }}/data',
         columns: [
             { data: 'kode_barang' },
-            { data: 'merk.nama_merk' },
-            { data: 'jenis_barang.nama_jenis_barang' },
+            { data: 'merk' },
+            { data: 'jenis_barang' },
             { data: 'nama_barang' },
             { data: 'stok' },
             { data: 'satuan' },

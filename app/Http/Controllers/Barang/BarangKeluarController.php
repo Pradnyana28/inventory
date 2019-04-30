@@ -37,6 +37,7 @@ class BarangKeluarController extends Controller
         $start = $request->get('startDateReport');
         $end = $request->get('endDateReport');
         $detailBarangKeluar = DetailBarangKeluar::with('barang')
+        ->where('status', 'ya')
         ->whereBetween('created_at', [$start, $end])->get()->toArray();
         return DataTables::of($detailBarangKeluar)->make();
     }

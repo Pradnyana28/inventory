@@ -108,6 +108,12 @@ class BarangController extends Controller
                     ->get()
                     ->toArray();
         return DataTables::of($barang)
+                ->editColumn('merk', function ($b) {
+                    return !isset($b['merk']['nama_merk']) ? 'Tidak ada merk' : $b['merk']['nama_merk'];
+                })
+                ->editColumn('jenis_barang', function ($b) {
+                    return !isset($b['jenis_barang']['nama_jenis_barang']) ? 'Tidak ada jenis barang' : $b['jenis_barang']['nama_jenis_barang'];
+                })
                 ->addColumn('action', function ($b) {
                     return "<a href='". route('barang.edit', $b['kode_barang']) ."' class='btn btn-primary'>Edit</a>";
                 })

@@ -15,8 +15,7 @@ class DetailBarangKeluarController extends Controller
     }
 
     public function index($kode_barang_keluar) {
-        $data = DetailBarangKeluar::with(['barangKeluar', 'pemesanan', 'barang'])->where('kode_barang_keluar', $kode_barang_keluar)->get()->toArray();
-        return view('pages.Admin.showDetailBarangKeluar', compact('data', 'kode_barang_keluar'));
+        return view('pages.Admin.showDetailBarangKeluar', compact('kode_barang_keluar'));
     }
 
     public function update(Request $request, $kode_barang_keluar) {
@@ -26,7 +25,8 @@ class DetailBarangKeluarController extends Controller
              * @param status_penerimaan array is required
              */
             $this->validate($request, ['status_penerimaan' => 'array|required']);
-
+            
+            throw new Exception(json_encode($request->get('status_penerimaan')));
             // update data
             foreach ($request->get('status_penerimaan') as $id_detail_barang_keluar => $status) {
                 $check = DetailBarangKeluar::findOrFail($id_detail_barang_keluar);
@@ -45,8 +45,8 @@ class DetailBarangKeluarController extends Controller
         }
     }
 
-    public function report() {
-        $data = DetailBarangKeluar::with('barang')->get()->toArray();
+    public function report($kode_barang_keluar) {
+        $data = DetailBarangKeluar::with(['barangKeluar', 'pemesanan', 'barang'])->where('kode_barang_keluar', $kode_barang_keluar)->get()->toArray();
         return DataTables::of($data)->make();
     }
 }
