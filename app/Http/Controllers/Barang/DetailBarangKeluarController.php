@@ -26,7 +26,6 @@ class DetailBarangKeluarController extends Controller
              */
             $this->validate($request, ['status_penerimaan' => 'array|required']);
             
-            throw new Exception(json_encode($request->get('status_penerimaan')));
             // update data
             foreach ($request->get('status_penerimaan') as $id_detail_barang_keluar => $status) {
                 $check = DetailBarangKeluar::findOrFail($id_detail_barang_keluar);

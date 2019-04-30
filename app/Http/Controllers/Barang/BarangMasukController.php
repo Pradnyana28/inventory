@@ -69,15 +69,4 @@ class BarangMasukController extends Controller
         $detailBarangMasuk = DetailBarangMasuk::with('barang')->get()->toArray();
         return DataTables::of($detailBarangMasuk)->make();
     }
-
-    /**
-     * DataTables ajax response for barang masuk report
-     */
-    public function report(Request $request) {
-        $start = $request->get('startDateReport');
-        $end = $request->get('endDateReport');
-        $detailBarangMasuk = DetailBarangMasuk::with('barang')
-        ->whereBetween('created_at', [$start, $end])->get()->toArray();
-        return DataTables::of($detailBarangMasuk)->make();
-    }
 }

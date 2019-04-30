@@ -49,5 +49,19 @@ Route::resource('merk', 'MerkController');
 Route::resource('users', 'UserController');
 
 Route::get('/laporan', function () { return view('pages.Manajer.laporan'); })->name('laporan');
-Route::get('/laporan/barangMasuk', function () { return view('pages.Manajer.laporanBarangMasuk'); })->name('laporanBarangMasuk');
-Route::get('/laporan/barangKeluar', function () { return view('pages.Manajer.laporanBarangKeluar'); })->name('laporanBarangKeluar');
+
+use App\DataTables\LaporanBarangMasukDataTable;
+Route::get('/laporan/barangMasuk', function (LaporanBarangMasukDataTable $dataTable) { 
+    return $dataTable->with([
+        'start' => request()->get('startDateReport'),
+        'end' => request()->get('endDateReport')
+    ])->render('pages.Manajer.laporanBarangMasuk'); 
+})->name('laporanBarangMasuk');
+
+use App\DataTables\LaporanBarangKeluarDataTable;
+Route::get('/laporan/barangKeluar', function (LaporanBarangKeluarDataTable $dataTable) { 
+    return $dataTable->with([
+        'start' => request()->get('startDateReport'),
+        'end' => request()->get('endDateReport')
+    ])->render('pages.Manajer.laporanBarangKeluar'); 
+})->name('laporanBarangKeluar');

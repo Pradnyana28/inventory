@@ -31,7 +31,7 @@
             ])
         @endcomponent
 
-        @slot('button', 'Cetak Laporan')
+        @slot('button', 'Tampilkan Laporan')
     @endcomponent
     </div>
     @endcomponent
@@ -39,43 +39,11 @@
     @component('components.card')
         @slot('title', 'Laporan Barang Keluar')
 
-        <div class="table-responsive mt-4">
-            <table class="table dTuser">
-                <thead>
-                    <tr>
-                        <th>Tanggal</th>
-                        <th>Kode Barang</th>
-                        <th>Nama Barang</th>
-                        <th>Jumlah Disetujui</th>
-                    </tr>
-                </thead>
-            </table>
-        </div>
+        {!! $dataTable->table() !!}
     @endcomponent
 </div>
 @endsection
 
-@php
-    $params = isset($_GET) ? json_encode($_GET) : '';
-    echo "<input type='hidden' id='reportParams' value='{$params}' />";
-@endphp
-
-@section('custom-scripts')
-<script type="text/javascript">
-    const params = document.getElementById('reportParams').value
-    $('.dTuser').DataTable({
-        processing: true,
-        serverSide: true,
-        ajax: {
-            url: '{{ route(Route::currentRouteName()) }}/data',
-            data: JSON.parse(params)
-        },
-        columns: [
-            { data: 'created_at' },
-            { data: 'kode_barang' },
-            { data: 'barang.nama_barang' },
-            { data: 'jumlah_disetujui' },
-        ]
-    });
-</script>
-@endsection
+@push('scripts')
+{!! $dataTable->scripts() !!}
+@endpush

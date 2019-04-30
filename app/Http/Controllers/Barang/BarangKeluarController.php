@@ -8,6 +8,7 @@ use App\DetailBarangKeluar;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Yajra\DataTables\DataTables;
+use App\DataTables\DataTableBase;
 
 class BarangKeluarController extends Controller
 {
@@ -28,17 +29,5 @@ class BarangKeluarController extends Controller
 
     public function jabatan() {
         return Auth::user()->jabatan;
-    }
-
-    /**
-     * DataTables ajax response for barang masuk report
-     */
-    public function report(Request $request) {
-        $start = $request->get('startDateReport');
-        $end = $request->get('endDateReport');
-        $detailBarangKeluar = DetailBarangKeluar::with('barang')
-        ->where('status', 'ya')
-        ->whereBetween('created_at', [$start, $end])->get()->toArray();
-        return DataTables::of($detailBarangKeluar)->make();
     }
 }
