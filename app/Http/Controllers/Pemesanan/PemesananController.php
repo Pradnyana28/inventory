@@ -149,11 +149,6 @@ class PemesananController extends Controller
         }
     }
 
-    public function destroy($id)
-    {
-        //
-    }
-
     public function jabatan() {
         return Auth::user()->jabatan;
     }
@@ -164,6 +159,9 @@ class PemesananController extends Controller
                         ->get();
                         
         return Datatables::of($pemesanan)
+                ->editColumn('created_at', function ($p) {
+                    return (new \DateTime($p['created_at']))->format('d M Y (h:i)');
+                })
                 ->addColumn('action', function ($p) {
                     return "<a href='". route('pemesananDetail.index', $p->kode_pemesanan) ."'>Detail</a>";
                 })

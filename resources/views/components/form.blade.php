@@ -13,7 +13,7 @@
         
         @if (isset($button))
         <div class="col-12 mt-4">
-            <button class="btn btn-primary float-right" ja-send>{{ $button }}</button>
+            <button class="btn btn-primary save-button float-right" ja-send>{{ $button }}</button>
         </div>
         @endif
     </form>

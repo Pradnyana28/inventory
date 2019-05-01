@@ -34,6 +34,6 @@
             { data: 'created_at' },
             { data: 'action' }
         ]
-    });
+    }).order([0, 'desc']).draw();
 </script>
 @endsection

@@ -13,7 +13,7 @@ class PemesananDetailController extends Controller
 {
     public function index($kode_pemesanan) {
         if (Auth::user()->jabatan == 'Admin') {
-            return $this->forAdmin($kode_pemesanan);
+            return $this->forAdmin();
         }
 
         return $this->forOperation($kode_pemesanan);

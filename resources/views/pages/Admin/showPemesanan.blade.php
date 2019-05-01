@@ -44,7 +44,12 @@
             { 
                 data: 'jumlah_disetujui',
                 render: function(d, t, r) {
-                    return `<input type="number" name="jumlah_disetujui[${r.kode_detail_pemesanan}]" value="${d}" class="form-control" />`
+                    // if (parseInt(d) > 0) {
+                    //     jQuery('.save-button').remove()
+                    //     return d;
+                    // } else {
+                        return `<input type="number" name="jumlah_disetujui[${r.kode_detail_pemesanan}]" value="${d}" class="form-control" />`
+                    // }
                 }
             },
         ]
