@@ -20,7 +20,7 @@
         @endcomponent
 
         @component('components.field')
-            @slot('label', 'Kode Merk')
+            @slot('label', 'Merk')
             @slot('class', 'col-md-4')
             @slot('select', true)
             @slot('selected', $data->kode_merk)
@@ -59,7 +59,8 @@
                 'type' => 'number',
                 'placeholder' => 'stok',
                 'name' => 'stok',
-                'value' => $data->stok
+                'value' => $data->stok,
+                'disabled' => 'disabled'
             ])
         @endcomponent
 

@@ -33,11 +33,11 @@ class BarangController extends Controller
                 'kode_merk' => 'required',
                 'kode_jenis_barang' => 'required',
                 'nama_barang' => 'required',
-                'stok' => 'required|integer',
                 'minimum_stok' => 'required|integer'
             ]);
             // save it
             $data = $request->all();
+            $data['stok'] = 0;
             $data['kode_barang'] = Barang::nextID();
             Barang::create($data);
             // return response
@@ -64,7 +64,6 @@ class BarangController extends Controller
                 'kode_merk' => 'required',
                 'kode_jenis_barang' => 'required',
                 'nama_barang' => 'required',
-                'stok' => 'required|integer',
                 'minimum_stok' => 'required|integer'
             ]);
             // save it
