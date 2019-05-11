@@ -29,7 +29,7 @@
             @endcomponent
 
             @component('components.field')
-                @slot('label', 'Kode Jenis Barang')
+                @slot('label', 'Jenis Barang')
                 @slot('class', 'col-md-4')
                 @slot('select', true)
                 @slot('attribute', [

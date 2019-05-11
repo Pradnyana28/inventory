@@ -31,7 +31,7 @@
         @endcomponent
 
         @component('components.field')
-            @slot('label', 'Kode Jenis Barang')
+            @slot('label', 'Jenis Barang')
             @slot('class', 'col-md-4')
             @slot('select', true)
             @slot('selected', $data->kode_jenis_barang)

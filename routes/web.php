@@ -26,9 +26,9 @@ Route::get('/merk/data', 'MerkController@getData');
 Route::get('/jenisBarang/data', 'Barang\JenisBarangController@getData');
 Route::get('/barangMasuk/data', 'Barang\BarangMasukController@getData');
 Route::get('/users/data', 'UserController@getData');
-Route::get('/laporan/barangMasuk/data', 'Barang\BarangMasukController@report');
-Route::get('/laporan/barangKeluar/data', 'Barang\BarangKeluarController@report');
 Route::get('/barangKeluar/{kode_barang_keluar}/detail/data', 'Barang\DetailBarangKeluarController@report');
+Route::get('/laporan/barangMasuk', 'Barang\BarangMasukController@report')->name('laporanBarangMasuk');
+Route::get('/laporan/barangKeluar', 'Barang\BarangKeluarController@report')->name('laporanBarangKeluar');
 
 /**
  * Web Routes
@@ -49,19 +49,5 @@ Route::resource('merk', 'MerkController');
 Route::resource('users', 'UserController');
 
 Route::get('/laporan', function () { return view('pages.Manajer.laporan'); })->name('laporan');
-
-use App\DataTables\LaporanBarangMasukDataTable;
-Route::get('/laporan/barangMasuk', function (LaporanBarangMasukDataTable $dataTable) { 
-    return $dataTable->with([
-        'start' => request()->get('startDateReport'),
-        'end' => request()->get('endDateReport')
-    ])->render('pages.Manajer.laporanBarangMasuk'); 
-})->name('laporanBarangMasuk');
-
-use App\DataTables\LaporanBarangKeluarDataTable;
-Route::get('/laporan/barangKeluar', function (LaporanBarangKeluarDataTable $dataTable) { 
-    return $dataTable->with([
-        'start' => request()->get('startDateReport'),
-        'end' => request()->get('endDateReport')
-    ])->render('pages.Manajer.laporanBarangKeluar'); 
-})->name('laporanBarangKeluar');
+Route::get('/cetak/laporanBarangMasuk', 'Print\LaporanBarangMasukController@index')->name('cetak.laporanBarangMasuk');
+Route::get('/cetak/laporanBarangKeluar', 'Print\LaporanBarangKeluarController@index')->name('cetak.laporanBarangKeluar');

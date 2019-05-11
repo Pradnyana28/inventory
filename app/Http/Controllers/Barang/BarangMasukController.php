@@ -10,6 +10,7 @@ use App\DetailBarangMasuk;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Yajra\DataTables\DataTables;
+use App\DataTables\LaporanBarangMasukDataTable;
 
 class BarangMasukController extends Controller
 {
@@ -62,11 +63,10 @@ class BarangMasukController extends Controller
         }
     }
 
-    /**
-     * DataTables ajax response
-     */
-    public function getData() {
-        $detailBarangMasuk = DetailBarangMasuk::with('barang')->get()->toArray();
-        return DataTables::of($detailBarangMasuk)->make();
+    public function report(LaporanBarangMasukDataTable $dataTable) {
+        return $dataTable->with([
+            'start' => request()->get('startDateReport'),
+            'end' => request()->get('endDateReport')
+        ])->render('pages.Manajer.laporanBarangMasuk');
     }
 }

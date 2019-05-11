@@ -38,11 +38,7 @@
             @slot('selected', $data->jabatan)
             @slot('attribute', [
                 'name' => 'jabatan',
-                'options' => [
-                    'Staff' => 'Staff',
-                    'Admin' => 'Admin',
-                    'Manajer' => 'Manajer'
-                ]
+                'options' => \App\User::jabatanList()
             ])
         @endcomponent
 
@@ -53,14 +49,7 @@
             @slot('selected', $data->departemen)
             @slot('attribute', [
                 'name' => 'departemen',
-                'options' => [
-                    'Operation' => 'Operation',
-                    'Reservation' => 'Reservation',
-                    'Manajemen' => 'Manajemen',
-                    'IT' => 'IT',
-                    'Ticketing' => 'Ticketing',
-                    'Accounting' => 'Accounting'
-                ]
+                'options' => \App\User::departemenList()
             ])
         @endcomponent
 

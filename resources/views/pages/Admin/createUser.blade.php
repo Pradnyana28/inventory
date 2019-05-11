@@ -34,11 +34,7 @@
                 @slot('select', true)
                 @slot('attribute', [
                     'name' => 'jabatan',
-                    'options' => [
-                        'Operator Gudang' => 'Operator Gudang',
-                        'Staff Admin' => 'Staff Admin',
-                        'Manajer' => 'Manajer'
-                    ]
+                    'options' => \App\User::jabatanList()
                 ])
             @endcomponent
 
@@ -48,11 +44,7 @@
                 @slot('select', true)
                 @slot('attribute', [
                     'name' => 'departemen',
-                    'options' => [
-                        'Operation' => 'Karyawan',
-                        'Admin' => 'Admin',
-                        'Manajer' => 'Manajer'
-                    ]
+                    'options' => \App\User::departemenList()
                 ])
             @endcomponent
 

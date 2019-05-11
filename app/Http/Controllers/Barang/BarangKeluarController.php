@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Yajra\DataTables\DataTables;
 use App\DataTables\DataTableBase;
+use App\DataTables\LaporanBarangKeluarDataTable;
 
 class BarangKeluarController extends Controller
 {
@@ -29,5 +30,12 @@ class BarangKeluarController extends Controller
 
     public function jabatan() {
         return Auth::user()->jabatan;
+    }
+
+    public function report(LaporanBarangKeluarDataTable $dataTable) {
+        return $dataTable->with([
+            'start' => request()->get('startDateReport'),
+            'end' => request()->get('endDateReport')
+        ])->render('pages.Manajer.laporanBarangKeluar');
     }
 }

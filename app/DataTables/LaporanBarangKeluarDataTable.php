@@ -41,10 +41,7 @@ class LaporanBarangKeluarDataTable extends DataTable
         return $this->builder()
                     ->columns($this->getColumns())
                     ->minifiedAjax()
-                    ->parameters([
-                        'dom' => 'Bfrtip',
-                        'buttons' => ['csv', 'excel']
-                    ]);
+                    ->parameters($this->getBuilderParameters());
     }
 
     /**
@@ -59,6 +56,14 @@ class LaporanBarangKeluarDataTable extends DataTable
             'kode_barang',
             'barang.nama_barang',
             'jumlah_disetujui'
+        ];
+    }
+
+    protected function getBuilderParameters() {
+        return [
+            'dom' => 'Bfrtip',
+            'order'   => [[0, 'asc']],
+            'buttons' => []
         ];
     }
 

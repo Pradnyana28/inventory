@@ -53,13 +53,30 @@ class User extends Authenticatable
         return $this->hasMany(BarangKeluar::class, 'user_id');
     }
 
-    public static function generatePassword($password)
-    {
+    public static function generatePassword($password) {
         return password_hash($password, PASSWORD_DEFAULT);
     }
 
-    public static function verifyPassword($password, $hash)
-    {
+    public static function verifyPassword($password, $hash) {
         return password_verify($password, $hash);
+    }
+
+    public static function departemenList() {
+        return [
+            'Operation' => 'Operation',
+            'Reservation' => 'Reservation',
+            'Manajemen' => 'Manajemen',
+            'IT' => 'IT',
+            'Ticketing' => 'Ticketing',
+            'Accounting' => 'Accounting'
+        ];
+    }
+
+    public static function jabatanList() {
+        return [
+            'Staff' => 'Staff',
+            'Admin' => 'Admin',
+            'Manajer' => 'Manajer'
+        ];
     }
 }
