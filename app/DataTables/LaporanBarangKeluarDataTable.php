@@ -28,7 +28,7 @@ class LaporanBarangKeluarDataTable extends DataTable
     {
         return DetailBarangKeluar::with('barang')
                      ->where('status', 'ya')
-                     ->whereBetween('created_at', [$this->start, $this->end]);
+                     ->whereBetween('created_at', [$this->start, $this->end])->get();
     }
 
     /**

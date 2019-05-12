@@ -49,5 +49,5 @@ Route::resource('merk', 'MerkController');
 Route::resource('users', 'UserController');
 
 Route::get('/laporan', function () { return view('pages.Manajer.laporan'); })->name('laporan');
-Route::get('/cetak/laporanBarangMasuk', 'Print\LaporanBarangMasukController@index')->name('cetak.laporanBarangMasuk');
-Route::get('/cetak/laporanBarangKeluar', 'Print\LaporanBarangKeluarController@index')->name('cetak.laporanBarangKeluar');
+Route::get('/cetak/laporanBarangMasuk', 'Report\LaporanBarangMasukController@index')->name('cetak.laporanBarangMasuk');
+Route::get('/cetak/laporanBarangKeluar', 'Report\LaporanBarangKeluarController@index')->name('cetak.laporanBarangKeluar');

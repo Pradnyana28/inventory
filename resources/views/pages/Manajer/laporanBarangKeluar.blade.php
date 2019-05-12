@@ -32,6 +32,11 @@
         @endcomponent
 
         @slot('button', 'Tampilkan Laporan')
+        @if (request()->has('startDateReport') && request()->has('endDateReport'))
+            @slot('appendButton')
+                <a href="{{ route('cetak.laporanBarangKeluar') }}?startDateReport={{ request()->get('startDateReport') }}&endDateReport={{ request()->get('endDateReport') }}" target="_blank" class="btn btn-danger save-button float-right" style="margin-right: 5px;">Cetak Laporan</a>
+            @endslot
+        @endif
     @endcomponent
     </div>
     @endcomponent

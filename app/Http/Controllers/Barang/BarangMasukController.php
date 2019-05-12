@@ -63,6 +63,11 @@ class BarangMasukController extends Controller
         }
     }
 
+    public function getData() {
+        $detailBarangMasuk = DetailBarangMasuk::with('barang')->get()->toArray();
+        return DataTables::of($detailBarangMasuk)->make();
+    }
+
     public function report(LaporanBarangMasukDataTable $dataTable) {
         return $dataTable->with([
             'start' => request()->get('startDateReport'),
