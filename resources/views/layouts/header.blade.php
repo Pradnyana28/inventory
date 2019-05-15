@@ -1,6 +1,6 @@
 @guest
     <div class="navbar-header mt-5 ml-5">
-        <a class="navbar-brand" href="index.html"> <img src="{{ asset('images/logo.png') }}" alt="homepage" class="dark-logo"> </a> 
+        <a class="navbar-brand" href="index.html"> <img src="{{ asset('images/logo.png') }}" alt="homepage" style="width: 40px;" class="dark-logo"> </a> 
     </div>
 @else
     <header class="topbar">
@@ -11,16 +11,16 @@
                 <a class="navbar-brand" href="{{ config('app.url') }}">
                     <!-- Logo icon -->
                     <b>
-                        <img src="{{ asset('images/logo-icon.png') }}" alt="homepage" class="dark-logo"/>
+                        <img src="{{ asset('images/logo-icon.png') }}" style="width: 40px;" alt="homepage" class="dark-logo"/>
                         <!-- Light Logo icon -->
-                        <img src="{{ asset('images/logo-light-icon.png') }}" alt="homepage" class="light-logo"/>
+                        <img src="{{ asset('images/logo-light-icon.png') }}" style="width: 40px;" alt="homepage" class="light-logo"/>
                     </b>
 
                     <span>
                         <!-- dark Logo text -->
-                        <img src="{{ asset('images/logo-text.png') }}" alt="homepage" class="dark-logo dark-logo2"/>
+                        <img src="{{ asset('images/logo-text.png') }}" style="width: 40px;" alt="homepage" class="dark-logo dark-logo2"/>
                         <!-- Light Logo text -->
-                        <img src="{{ asset('images/logo-light-text.png') }}" class="light-logo" alt="homepage"/>
+                        <img src="{{ asset('images/logo-light-text.png') }}" style="width: 40px;" class="light-logo" alt="homepage"/>
                     </span> 
                 </a>
             </div>
