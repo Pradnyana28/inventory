@@ -54,6 +54,13 @@ class PemesananController extends Controller
                 'kode_pemesanan' => $pemesananNextID,
                 'user_id' => Auth::user()->user_id
             ];
+
+            for ($i=0; $i < count($data['kode_barang']); $i++) {
+                if ($data['qty'][$i] <= 0) {
+                    throw new Exception("Jumlah pesanan harus diisi.");
+                }
+            }
+
             $pemesanan = Pemesanan::create($dataPesanan);
 
             /**
@@ -65,11 +72,7 @@ class PemesananController extends Controller
              * @param jumlah_disetujui
              * @param status status penerimaan setiap barang
              */
-            for ($i=0; $i < count($data['kode_barang']); $i++) { 
-                if ($data[$i]['jumlah_pemesanan'] <= 0) {
-                    throw new Exception("Julmah pesanan harus diisi.");
-                }
-
+            for ($i=0; $i < count($data['kode_barang']); $i++) {
                 $detailPemesananNextID = DetailPemesanan::nextID();
                 $dataDetailPesanan = [
                     'kode_detail_pemesanan' => $detailPemesananNextID,

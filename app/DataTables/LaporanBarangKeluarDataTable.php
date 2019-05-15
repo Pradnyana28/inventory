@@ -52,9 +52,9 @@ class LaporanBarangKeluarDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'created_at',
+            'created_at' => 'Tanggal',
             'kode_barang',
-            'barang.nama_barang',
+            'barang.nama_barang' => 'Nama Barang',
             'jumlah_disetujui'
         ];
     }
