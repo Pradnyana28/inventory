@@ -16,12 +16,10 @@
                         <img src="{{ asset('images/logo-light-icon.png') }}" style="width: 70px;" alt="homepage" class="light-logo"/>
                     </b>
 
-                    <span>
-                        <!-- dark Logo text -->
-                        <img src="{{ asset('images/logo-text.png') }}" style="width: 70px;" alt="homepage" class="dark-logo dark-logo2"/>
-                        <!-- Light Logo text -->
-                        <img src="{{ asset('images/logo-light-text.png') }}" style="width: 70px;" class="light-logo" alt="homepage"/>
-                    </span> 
+                    {{-- <span>
+                        <img src="{{ asset('images/logo-text.png') }}" style="width: 82px; height: 19px" alt="homepage" class="dark-logo dark-logo2"/>
+                        <img src="{{ asset('images/logo-light-text.png') }}" style="width: 82px; height: 19px" class="light-logo" alt="homepage"/>
+                    </span>  --}}
                 </a>
             </div>
 
