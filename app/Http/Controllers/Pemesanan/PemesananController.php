@@ -66,7 +66,7 @@ class PemesananController extends Controller
              * @param status status penerimaan setiap barang
              */
             for ($i=0; $i < count($data['kode_barang']); $i++) { 
-                if ($data['jumlah_pemesanan'] <= 0) {
+                if ($data[$i]['jumlah_pemesanan'] <= 0) {
                     throw new Exception("Julmah pesanan harus diisi.");
                 }
 
