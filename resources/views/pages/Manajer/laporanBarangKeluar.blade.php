@@ -16,6 +16,7 @@
                 'type' => 'date',
                 'placeholder' => 'pilih tanggal',
                 'name' => 'startDateReport',
+                'required' => 'required',
                 'value' => request()->get('startDateReport')
             ])
         @endcomponent
@@ -27,6 +28,7 @@
                 'type' => 'date',
                 'placeholder' => 'pilih tanggal',
                 'name' => 'endDateReport',
+                'required' => 'required',
                 'value' => request()->get('endDateReport')
             ])
         @endcomponent
