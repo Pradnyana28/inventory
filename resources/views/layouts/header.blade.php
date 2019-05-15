@@ -1,6 +1,6 @@
 @guest
     <div class="navbar-header mt-5 ml-5">
-        <a class="navbar-brand" href="index.html"> <img src="{{ asset('images/logo-t.png') }}" alt="homepage" class="dark-logo"> </a> 
+        <a class="navbar-brand" href="index.html"> <img src="{{ asset('images/logo.png') }}" alt="homepage" class="dark-logo"> </a> 
     </div>
 @else
     <header class="topbar">
