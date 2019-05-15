@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Barang;
 
+use Validator;
 use Exception;
 use Auth;
 use App\Barang;
@@ -29,12 +30,23 @@ class BarangMasukController extends Controller
 
     public function store(Request $request) {
         try {
-            // validate request
-            $this->validate($request, [
+            $messages = [
+                'required' => ':attribute harus diisi.',
+                'min' => 'Mohon memasukkan jumlah barang masuk.'
+            ];
+            
+            $validator = Validator::make($request->all(), [
                 'qty' => 'array|required',
                 'qty.*' => 'integer|min:1|required',
-                'kode_barang' => 'array|required'
-            ]);
+                'kode_barang' => 'array|required',
+            ], $messages);
+
+            if ($validator->fails()) {
+                foreach ($validator->errors()->all() as $message) {
+                    throw new Exception($message);
+                }
+            }
+
             // save it
             $data = $request->all();
             $data['kode_barang_masuk'] = BarangMasuk::nextID();

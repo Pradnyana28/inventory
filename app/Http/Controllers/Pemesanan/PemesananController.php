@@ -161,10 +161,10 @@ class PemesananController extends Controller
     }
 
     public function getData() {
-        $pemesanan = Pemesanan::select(['kode_pemesanan', 'user_id', 'created_at'])
-                        ->where('user_id', Auth::user()->user_id)
-                        ->with('users')
-                        ->get();
+        $pemesanan = Pemesanan::with('users')->where('user_id', Auth::user()->user_id)->get();
+        if ($this->jabatan() == 'Admin') {
+            $pemesanan = Pemesanan::with('users')->get();
+        }
                         
         return Datatables::of($pemesanan)
                 ->editColumn('created_at', function ($p) {
