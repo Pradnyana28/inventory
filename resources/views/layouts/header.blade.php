@@ -1,6 +1,6 @@
 @guest
     <div class="navbar-header mt-5 ml-5">
-        <a class="navbar-brand" href="index.html"> <img src="{{ asset('images/logo.png') }}" alt="homepage" style="width: 40px;" class="dark-logo"> </a> 
+        <a class="navbar-brand" href="index.html"> <img src="{{ asset('images/logo.png') }}" alt="homepage" style="width: 70px;" class="dark-logo"> </a> 
     </div>
 @else
     <header class="topbar">
@@ -11,16 +11,16 @@
                 <a class="navbar-brand" href="{{ config('app.url') }}">
                     <!-- Logo icon -->
                     <b>
-                        <img src="{{ asset('images/logo-icon.png') }}" style="width: 40px;" alt="homepage" class="dark-logo"/>
+                        <img src="{{ asset('images/logo-icon.png') }}" style="width: 70px;" alt="homepage" class="dark-logo"/>
                         <!-- Light Logo icon -->
-                        <img src="{{ asset('images/logo-light-icon.png') }}" style="width: 40px;" alt="homepage" class="light-logo"/>
+                        <img src="{{ asset('images/logo-light-icon.png') }}" style="width: 70px;" alt="homepage" class="light-logo"/>
                     </b>
 
                     <span>
                         <!-- dark Logo text -->
-                        <img src="{{ asset('images/logo-text.png') }}" style="width: 40px;" alt="homepage" class="dark-logo dark-logo2"/>
+                        <img src="{{ asset('images/logo-text.png') }}" style="width: 70px;" alt="homepage" class="dark-logo dark-logo2"/>
                         <!-- Light Logo text -->
-                        <img src="{{ asset('images/logo-light-text.png') }}" style="width: 40px;" class="light-logo" alt="homepage"/>
+                        <img src="{{ asset('images/logo-light-text.png') }}" style="width: 70px;" class="light-logo" alt="homepage"/>
                     </span> 
                 </a>
             </div>
@@ -32,7 +32,7 @@
                         <!-- Profile -->
                         <li class="nav-item dropdown u-pro">
                             <a class="nav-link dropdown-toggle waves-effect waves-dark profile-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img src="{{ asset('images/no_avatar.jpg') }}" alt="user-img">
+                                <img src="{{ asset('images/logo-icon.jpeg') }}" alt="user-img">
                                 <span class="circle-status"></span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right animated fadeIn">
@@ -40,7 +40,7 @@
                                     <li class="text-center">
                                         <div class="dw-user-box">
                                             <div class="u-img">
-                                                <img src="{{ asset('images/no_avatar.jpg') }}" alt="user-img">
+                                                <img src="{{ asset('images/logo-icon.jpeg') }}" alt="user-img">
                                                 <div class="clearfix"></div>
                                                 <div class="u-text">
                                                     <h4>{{ Auth::user()->nama_user }}</h4>
