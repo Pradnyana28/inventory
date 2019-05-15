@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Validator;
 use Exception;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use Yajra\DataTables\DataTables;
 
@@ -25,13 +25,24 @@ class UserController extends Controller
     public function store(Request $request) {
         try {
             // validate request
-            $this->validate($request, [
+            $messages = [
+                'required' => ':attribute harus diisi.',
+                'confirmed' => ':attribute harus diisi.'
+            ];
+            
+            $validator = Validator::make($request->all(), [
                 'nama_user' => 'required',
                 'email' => 'required',
                 'jabatan' => 'required',
                 'departemen' => 'required',
                 'password' => 'confirmed|required'
-            ]);
+            ], $messages);
+
+            if ($validator->fails()) {
+                foreach ($validator->errors()->all() as $message) {
+                    throw new Exception($message);
+                }
+            }
             // save it
             $data = $request->all();
             $data['password'] = User::generatePassword($data['password']);
