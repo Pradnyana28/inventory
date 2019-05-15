@@ -34,6 +34,7 @@ class UserController extends Controller
             ]);
             // save it
             $data = $request->all();
+            $data['password'] = User::generatePassword($data['password']);
             User::create($data);
             // return response
             return response()->json([
