@@ -37,9 +37,9 @@ class LaporanBarangMasukDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'created_at' => 'Tanggal',
+            'Tanggal' => ['name' => 'created_at', 'data' => 'created_at'],
             'kode_barang',
-            'barang.nama_barang' => 'Nama Barang',
+            'Nama Barang' => ['name' => 'barang.nama_barang', 'data' => 'barang.nama_barang'],
             'jumlah'
         ];
     }
