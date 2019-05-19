@@ -30,19 +30,7 @@ class BarangController extends Controller
     public function store(Request $request) {
         try {
             // validate request
-            $messages = [
-                'required' => ':attribute harus diisi.',
-                'confirmed' => ':attribute harus diisi.',
-                'integer' => ':attribute harus berupa angka.'
-            ];
-            
-            $validator = Validator::make($request->all(), [
-                'kode_merk' => 'required',
-                'kode_jenis_barang' => 'required',
-                'nama_barang' => 'required',
-                'minimum_stok' => 'required|integer',
-                'satuan' => 'required'
-            ], $messages);
+            $validator = Validator::make($request->all(), $this->requirement(), $this->messages());
 
             if ($validator->fails()) {
                 foreach ($validator->errors()->all() as $message) {
@@ -74,12 +62,12 @@ class BarangController extends Controller
     public function update(Request $request, $id) {
         try {
             // validate request
-            $this->validate($request, [
-                'kode_merk' => 'required',
-                'kode_jenis_barang' => 'required',
-                'nama_barang' => 'required',
-                'minimum_stok' => 'required|integer'
-            ]);
+            $validator = Validator::make($request->all(), $this->requirement(), $this->messages());
+            if ($validator->fails()) {
+                foreach ($validator->errors()->all() as $message) {
+                    throw new Exception($message);
+                }
+            }
             // save it
             $data = $request->all();
             $barang = Barang::findOrFail($id);
@@ -93,6 +81,24 @@ class BarangController extends Controller
         } catch (Exception $e) {
             return response()->json(['result' => $e->getMessage()]);
         }
+    }
+
+    public function requirement() {
+        return [
+            'kode_merk' => 'required',
+            'kode_jenis_barang' => 'required',
+            'nama_barang' => 'required',
+            'minimum_stok' => 'required|integer',
+            'satuan' => 'required'
+        ];
+    }
+
+    public function messages() {
+        return [
+            'required' => ':attribute harus diisi.',
+            'confirmed' => ':attribute harus diisi.',
+            'integer' => ':attribute harus berupa angka.'
+        ];
     }
 
     public function fetchJenisBarang() {
