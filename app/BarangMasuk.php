@@ -33,7 +33,7 @@ class BarangMasuk extends Model
         $data = self::latest()->first() ? ((self::latest()->first()))->kode_barang_masuk : self::$codePrefix . 0;
         $data = str_replace(self::$codePrefix, '', $data);
         $nextID = $data + 1;
-        while (self::find($nextID)) {
+        while (self::find(self::$codePrefix . $nextID)) {
             $nextID++;
         }
         return self::$codePrefix . $nextID;

@@ -15,6 +15,6 @@ class LaporanBarangKeluarController extends Controller
         $data = DetailBarangKeluar::with('barang')->where('status', 'ya')->whereBetween('created_at', [$start, $end])->get();
 
         $pdf = PDF::loadView('layouts.pdf.barangKeluar', compact('data', 'start', 'end'));
-        return $pdf->stream('reportBarangMasuk_'. time() .'.pdf');
+        return $pdf->stream('reportBarangKeluar_'. time() .'.pdf');
     }
 }

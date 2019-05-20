@@ -33,6 +33,10 @@ class DetailBarangMasuk extends Model
     public static function nextID() {
         $data = self::latest()->first() ? ((self::latest()->first()))->kode_detailbarang_masuk : self::$codePrefix . 0;
         $data = str_replace(self::$codePrefix, '', $data);
-        return self::$codePrefix . ($data + 1);
+        $nextID = $data + 1;
+        while (self::find(self::$codePrefix . $nextID)) {
+            $nextID++;
+        }
+        return self::$codePrefix . $nextID;
     }
 }
