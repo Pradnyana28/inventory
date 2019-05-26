@@ -18,6 +18,7 @@
                         <th>Nama Barang</th>
                         <th>Satuan</th>
                         <th>QTY</th>
+                        <th>Stok Barang</th>
                         <th>Jumlah Disetujui</th>
                     </tr>
                 </thead>
@@ -41,6 +42,7 @@
             { data: 'barang.nama_barang' },
             { data: 'barang.satuan' },
             { data: 'jumlah_pemesanan' },
+            { data: 'barang.stok' },
             { 
                 data: 'jumlah_disetujui',
                 render: function(d, t, r) {

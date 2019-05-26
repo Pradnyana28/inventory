@@ -72,6 +72,7 @@
                             <td>{{ $b['nama_barang'] }}</td>
                             <td>{{ $b['stok'] }}</td>
                             <td>
+                                @if ($b['stok'] > 0)
                                 <a 
                                     href="#"
                                     class="addGoodsButton btn btn-primary waves-effect waves-dark"
@@ -80,6 +81,7 @@
                                     data-kode="{{ $b['kode_barang'] }}"
                                     data-satuan="{{ $b['satuan'] }}"
                                 >Tambah</a>
+                                @endif
                             </td>
                         </tr>
                         @endforeach
