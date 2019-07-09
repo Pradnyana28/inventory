@@ -31,7 +31,7 @@
                         <td>{{ $d['barang']['satuan'] }}</td>
                         <td>{{ $d['created_at'] }}</td>
                         <td>{{ $d['status'] == 'no' ? 'Belum Diterima' : 'Diterima' }}</td>
-                        <td>{{ $d['updated_at'] }}</td>
+                        <td>{{ $d['status'] == 'no' ? '' : $d['updated_at'] }}</td>
                     </tr>
                     @endforeach
                 @endif

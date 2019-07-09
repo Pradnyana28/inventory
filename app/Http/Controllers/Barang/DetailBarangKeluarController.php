@@ -6,6 +6,7 @@ use Exception;
 use DataTables;
 use App\Barang;
 use App\DetailBarangKeluar;
+use App\DetailPemesanan;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -34,7 +35,12 @@ class DetailBarangKeluarController extends Controller
                 if ($check->status != $status) {
                     $check->status = $status;
                     $check->save();
-
+                    
+                    DetailPemesanan::where('kode_pemesanan', $check->kode_pemesanan)
+                                    ->where('kode_barang', $check->kode_barang)
+                                    ->update([
+                                        'status' => $status == 'ya' ? 'yes' : 'no'
+                                    ]);
                     $this->stockTransaction($status, $check);
                 }
             }

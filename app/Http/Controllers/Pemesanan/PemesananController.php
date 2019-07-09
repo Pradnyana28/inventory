@@ -143,7 +143,7 @@ class PemesananController extends Controller
                     ]);
 
                     // update stok barang
-                    Barang::decreaseStock($detailPemesanan->kode_barang, $qty);
+                    // Barang::decreaseStock($detailPemesanan->kode_barang, $qty);
                 }
             }
 
