@@ -29,6 +29,7 @@ Route::get('/users/data', 'UserController@getData');
 Route::get('/barangKeluar/{kode_barang_keluar}/detail/data', 'Barang\DetailBarangKeluarController@report');
 Route::get('/laporan/barangMasuk', 'Barang\BarangMasukController@report')->name('laporanBarangMasuk');
 Route::get('/laporan/barangKeluar', 'Barang\BarangKeluarController@report')->name('laporanBarangKeluar');
+Route::get('/laporan/laporanLainLain', 'Report\LaporanLainLainController@index')->name('laporanLainLain');
 
 /**
  * Web Routes

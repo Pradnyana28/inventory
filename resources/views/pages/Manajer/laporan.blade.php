@@ -21,6 +21,15 @@
         @endcomponent
     </a>
     </div>
+
+    <div class="col-6">
+        <a href="{{ route('laporanLainLain') }}" title="laporan barang keluar">
+            @component('components.card')
+                <h2>Laporan Lain - Lain</h2>
+                <p>Klik disini untuk melihat laporan</p>
+            @endcomponent
+        </a>
+    </div>
 </div>
 </div>
 @endsection
