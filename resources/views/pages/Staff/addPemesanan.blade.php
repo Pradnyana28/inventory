@@ -35,6 +35,7 @@
                             <th>Kode Barang</th>
                             <th>Nama Barang</th>
                             <th>Qty</th>
+                            <th>Stok</th>
                             <th>Satuan</th>
                             <th>Aksi</th>
                         </tr>
@@ -155,11 +156,21 @@
                 <input type="hidden" name="stok_barang[]" value="${stok_barang}" />
                 <input type="hidden" name="satuan_barang[]" value="${satuan_barang}" />`,
             jQuery(this).attr('data-name'),
-            '<input type="number" name="qty[]" class="form-control" value="0" />',
+            '<input type="number" name="qty[]" max="'+ stok_barang +'" id="'+ kode_barang +'" onChange="maxInput(\''+ kode_barang +'\')" class="form-control" value="0" />',
+            stok_barang,
             jQuery(this).attr('data-satuan'),
             '<a href="#" class="removeButton">Hapus</a>'
         ]).draw(false)
     })
+
+    function maxInput(target) {
+        const that = jQuery(`#${target}`)
+        const val  = that.val()
+        const max  = that.attr('max')
+        if (parseInt(val) > parseInt(max)) {
+            that.val(max)
+        }
+    }
     
     // remove selected barang
     function removeBarang(idx, row) {
