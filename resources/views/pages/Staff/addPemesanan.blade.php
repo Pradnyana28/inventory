@@ -81,6 +81,7 @@
                                     data-stok="{{ $b['stok'] }}"
                                     data-kode="{{ $b['kode_barang'] }}"
                                     data-satuan="{{ $b['satuan'] }}"
+                                    data-minimum="{{ $b['minimum_stok'] }}"
                                 >Tambah</a>
                                 @endif
                             </td>
@@ -106,6 +107,7 @@
                     data-stok=""
                     data-kode="{{ App\Barang::nextID() }}"
                     data-satuan="PCS"
+                    data-minimum="10"
                 >Tambah</a>
             </div>
         </div>
@@ -148,12 +150,14 @@
         const nama_barang = jQuery(this).attr('data-name')
         const stok_barang = jQuery(this).attr('data-stok')
         const satuan_barang = jQuery(this).attr('data-satuan')
+        const minimum_stok = jQuery(this).attr('data-minimum')
 
         t.row.add([
             `${kode_barang} 
                 <input type="hidden" name="kode_barang[]" value="${kode_barang}" />
                 <input type="hidden" name="nama_barang[]" value="${nama_barang}" />
                 <input type="hidden" name="stok_barang[]" value="${stok_barang}" />
+                <input type="hidden" name="minimum_stok[]" value="${minimum_stok}" />
                 <input type="hidden" name="satuan_barang[]" value="${satuan_barang}" />`,
             jQuery(this).attr('data-name'),
             '<input type="number" name="qty[]" max="'+ stok_barang +'" id="'+ kode_barang +'" onChange="maxInput(\''+ kode_barang +'\')" class="form-control" value="0" />',

@@ -3,6 +3,7 @@
 namespace App;
 
 use DB;
+use App\User;
 use App\DetailPemesanan;
 use App\Merk;
 use App\JenisBarang;
@@ -60,6 +61,10 @@ class Barang extends Model
         $barang->stok -= $stok;
         $barang->save();
         return new static();
+    }
+
+    public static function maxOrder($stok, $minStok) {
+        return floor(($stok - $minStok) / count(User::departemenList()));
     }
 
     public static function nextID() {

@@ -56,8 +56,17 @@ class PemesananController extends Controller
             ];
 
             for ($i=0; $i < count($data['kode_barang']); $i++) {
-                if ($data['qty'][$i] <= 0) {
+                $qty = $data['qty'][$i];
+                $stok = $data['stok_barang'][$i];
+                $minimum_stok = $data['minimum_stok'][$i];
+                if ($qty <= 0) {
                     throw new Exception("Jumlah pesanan harus diisi.");
+                }
+                
+                // cek max order
+                $maxOrder = Barang::maxOrder($stok, $minimum_stok);
+                if ($qty > $maxOrder) {
+                    throw new Exception("Tidak dapat memesan lebih dari ketentuan setiap divisi yaitu {$maxOrder}");
                 }
             }
 
